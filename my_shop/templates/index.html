@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Tech Store - Electronics</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #faf7f2;
+        }
+
+        /* Coffee Shop Color Palette */
+        :root {
+            --coffee-dark: #1a3a52;
+            --coffee-brown: #2c5aa0;
+            --coffee-light: #4a90e2;
+            --cream: #e8f4f8;
+            --green: #0066cc;
+            --text-dark: #1a3a52;
+            --background: #f0f8ff;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(135deg, var(--coffee-dark) 0%, var(--coffee-brown) 100%);
+            box-shadow: 0 4px 15px rgba(26, 58, 82, 0.2);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 28px;
+            color: var(--cream) !important;
+            letter-spacing: 1px;
+        }
+
+        .nav-link {
+            color: var(--cream) !important;
+            font-weight: 500;
+            margin-left: 25px;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--green);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--green) !important;
+        }
+
+        /* Banner */
+        .banner {
+            background: linear-gradient(rgba(26, 58, 82, 0.4), rgba(26, 58, 82, 0.4)), 
+                        url('https://images.unsplash.com/photo-1447933601403-0c6688bcf566?w=1200&h=400&fit=crop');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--cream);
+            margin: 30px 0;
+            border-radius: 15px;
+        }
+
+        .banner h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 52px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .banner p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            font-weight: 300;
+        }
+
+        .btn-shop {
+            background: linear-gradient(135deg, var(--green) 0%, #0052a3 100%);
+            color: white;
+            padding: 14px 45px;
+            font-size: 18px;
+            border: none;
+            border-radius: 50px;
+            transition: 0.3s;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
+        }
+
+        .btn-shop:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.4);
+            color: white;
+        }
+
+        /* Product Section */
+        .product-section {
+            padding: 60px 0;
+            background-color: var(--background);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 50px;
+            color: var(--coffee-dark);
+            letter-spacing: 1px;
+        }
+
+        .product-card {
+            transition: 0.3s;
+            border: 2px solid var(--cream);
+            box-shadow: 0 4px 12px rgba(111, 78, 55, 0.1);
+            height: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            background: white;
+        }
+
+        .product-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 8px 25px rgba(111, 78, 55, 0.2);
+            border-color: var(--green);
+        }
+
+        .product-img {
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--coffee-dark);
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            color: #666;
+            font-size: 14px;
+            font-weight: 300;
+        }
+
+        .product-price {
+            color: var(--green);
+            font-size: 26px;
+            font-weight: 700;
+            margin: 15px 0;
+        }
+
+        .btn-add-cart {
+            background: linear-gradient(135deg, var(--coffee-brown) 0%, var(--coffee-dark) 100%);
+            color: white;
+            width: 100%;
+            border: none;
+            border-radius: 25px;
+            padding: 12px;
+            font-weight: 600;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-add-cart:hover {
+            color: white;
+            transform: scale(1.02);
+            box-shadow: 0 4px 15px rgba(111, 78, 55, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--coffee-dark) 0%, var(--coffee-brown) 100%);
+            color: var(--cream);
+            padding: 50px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h5 {
+            margin-bottom: 15px;
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--green);
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(245, 230, 211, 0.9);
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: block;
+            font-size: 14px;
+            font-weight: 300;
+        }
+
+        .footer-section a:hover {
+            color: var(--green);
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 25px;
+            text-align: center;
+        }
+
+        .copyright {
+            margin: 0;
+            font-size: 13px;
+            font-weight: 300;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">💻 My Tech Store</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">🏠 Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#products">⚙️ Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#cart">🛒 Cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login" style="color: var(--green); font-weight: bold;">👨‍💼 Admin</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner -->
+    <div class="banner" id="home">
+        <div>
+            <h1>Welcome to My Tech Store</h1>
+            <p>Discover our latest electronics and gadgets</p>
+            <button class="btn-shop" onclick="alert('Welcome to our tech store!')">💻 Shop Now</button>
+        </div>
+    </div>
+
+    <!-- Product Grid -->
+    <section class="product-section" id="products">
+        <div class="container">
+            <h2 class="section-title">⚡ Latest Electronics</h2>
+            <div class="row g-4">
+                {% for product in products %}
+                <!-- Product -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <img src="{{ product.image_url }}" class="card-img-top product-img" alt="{{ product.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">High-quality product with excellent features</p>
+                            <p class="product-price">฿{{ "%.2f"|format(product.price) }}</p>
+                            <button class="btn btn-add-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h5>� My Tech Store</h5>
+                    <p>Your trusted online shopping destination for quality electronics</p>
+                </div>
+                <div class="footer-section">
+                    <h5>Quick Links</h5>
+                    <a href="#home">Home</a>
+                    <a href="#products">Products</a>
+                    <a href="#cart">Cart</a>
+                </div>
+                <div class="footer-section">
+                    <h5>Contact Us</h5>
+                    <p>📞 Phone: +66-2-123-4567</p>
+                    <p>📧 Email: info@myshop.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 My Tech Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

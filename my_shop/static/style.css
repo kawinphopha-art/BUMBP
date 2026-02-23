@@ -1,0 +1,123 @@
+/* Coffee Shop Theme - Main Stylesheet */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600&display=swap');
+
+/* Coffee Shop Color Palette */
+:root {
+    --coffee-dark: #6f4e37;
+    --coffee-brown: #8b6f47;
+    --coffee-light: #d4a574;
+    --cream: #f5e6d3;
+    --green: #4a6741;
+    --text-dark: #3d2817;
+    --background: #faf7f2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background);
+    color: var(--text-dark);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 15px;
+    color: var(--coffee-dark);
+    font-weight: 700;
+}
+
+p {
+    line-height: 1.6;
+    color: #666;
+    font-weight: 300;
+}
+
+/* Buttons */
+.btn {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--green) 0%, #2d4a38 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(74, 103, 65, 0.3);
+    color: white;
+}
+
+.btn-secondary {
+    background-color: var(--coffee-brown);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: var(--coffee-dark);
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background-color: #a85555;
+    color: white;
+    border-radius: 25px;
+}
+
+.btn-danger:hover {
+    background-color: #8b4545;
+    color: white;
+}
+
+/* Links */
+a {
+    color: var(--green);
+    text-decoration: none;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+a:hover {
+    color: var(--coffee-brown);
+}
+
+/* Form Controls */
+.form-control, .form-select {
+    border-radius: 8px;
+    border: 2px solid var(--cream);
+    padding: 10px 15px;
+    font-family: 'Poppins', sans-serif;
+    transition: 0.3s;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--coffee-brown);
+    box-shadow: 0 0 0 0.2rem rgba(139, 111, 71, 0.25);
+    color: var(--text-dark);
+}
+
+.form-label {
+    font-weight: 600;
+    color: var(--coffee-dark);
+    margin-bottom: 8px;
+}
